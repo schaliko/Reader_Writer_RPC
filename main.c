@@ -93,6 +93,12 @@ int main() {
     int reader = semget(reader_key, 1, IPC_CREAT | 0666);
     int mutex = semget(mutex_key, 1, IPC_CREAT | 0666);
 
+
+    if (writer < 0 || reader < 0 || mutex < 0) {
+        perror("Error creating semaphores");
+        exit(1);
+    }
+
     // Semaphore initialisieren
     semctl(writer, 0, SETVAL, 1); // Schreiber darf starten
     semctl(reader, 0, SETVAL, 0); // Keine Leser zu Beginn

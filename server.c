@@ -1,8 +1,8 @@
-#include <stdio.h>
-#include <rpc/rpc.h>
 #include "math.h"
+#include <rpc/rpc.h>
+#include <stdio.h>
 
-int *add_1_svc(intpair *pair, struct svc_req *rqstp) {
+int *add_1_svc(intpair *pair, struct svc_req *rqstp){
     static int result;
     result = pair->a + pair->b;
     printf("Addition: %d + %d = %d\n", pair->a, pair->b, result);
@@ -22,3 +22,4 @@ int *cube_1_svc(int *num, struct svc_req *rqstp) {
     printf("Kubierung: %d ^ 3 = %d\n", *num, result);
     return &result;
 }
+
